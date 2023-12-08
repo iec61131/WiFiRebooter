@@ -1,5 +1,9 @@
 # Smart WiFi Restarting Unit
 
+<div style="background-color: #228B22; color: white; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+  <strong>Verified with Tasmota Version:</strong> 13.2.0.3(tasmota-4M)
+</div>
+
 This guide will walk you through creating a Smart WiFi Restarting Unit using a Tasmota-supported smart plug, specifically the Sonoff S31. This project is based on the Tasmota firmware and involves some hardware modifications using a soldering iron. Ensure you have the necessary physical resources listed below before starting.
 
 ## Physical Resources Required:
