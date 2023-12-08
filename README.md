@@ -32,10 +32,12 @@ This guide will walk you through creating a Smart WiFi Restarting Unit using a T
 4. **Modifications:**
    - upload the `autoexec.bat` file to the GUI via `Consoles` -> `Manage File System`
    - go to terminal via `Consoles` -> `Console` and add execute *line-by-line*:
+   - Check out the [formatted_rules_with_explanation.bat](formatted_rules_with_explanation.bat) file for pre-configured rules and explanations.
    - ```bash
      Rule1 ON Power1#Boot Do Time 1672531201 ENDON
      Rule2 ON Power1#Boot do backlog Var1 1; Var2 0; Var3 0; Var4 10; Var5 10; ENDON ON Time#Minute|%Var5% DO backlog LedState 0; Var; Delay 100; Ping4 8.8.8.8; ENDON ON Ping#8.8.8.8#Success==0 DO backlog Var5 %Var4%; Power1 0; Delay 40; Power1 1; Add2 1; Var3 %timestamp%; ENDON ON Ping#8.8.8.8#Success>0 DO backlog LedState 1; Var5 %Var1%; ENDON
      ```
+   - Hard reboot via power-on / power-off device
 
 ## Frequently Asked Questions (FAQ):
 
@@ -50,7 +52,19 @@ This guide will walk you through creating a Smart WiFi Restarting Unit using a T
    - Once in hostapd mode, connect any device to the unprotected SSID "tasmota-*."
    - Access the Tasmota configuration interface through the connected device to change WiFi credentials.
 
-**2. Additional Information:**
+**2. Why not using the recommended rule in the docs?**
+   
+2.1 **Missing unix time**
+- after reboot of a modem/router no NTP is possible
+- The rules are dependent on Rule1, which sets the initial Unix time. Ensure that Rule1 is executed before other rules to establish the correct time reference.
+
+2.2 **reset config disable**
+- with latest tasmato release, regular reboots within <10sec can lead to disable rules. Fixed in `autoexec.bat`
+
+2.3 **Missing ramp-up time reboots modem/router too early** 
+- A ramp-up time of, for example, 10 minutes is missing in the rules. Adding a delay or ramp-up time is essential to allow the modem/router to fully restart before subsequent commands are executed. Adjust the timing in the rules to accommodate the restart time of your specific modem/router.
+
+**3. Additional Information:**
    - For more detailed information, troubleshooting, and advanced configurations, refer to the [Tasmota Documentation](https://ota.tasmota.com/tasmota/).
 
 **Note:** This guide assumes a basic understanding of soldering and familiarity with the Tasmota firmware. Always follow safety precautions and guidelines provided by the hardware and firmware documentation.
