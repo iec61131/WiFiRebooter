@@ -67,6 +67,7 @@ This guide will walk you through creating a Smart WiFi Restarting Unit using a T
 2.4. **Variable init**
 - Without an active Wifi ( which is not available upon restart) the triggers needs to be `Power1#Boot` instead of `system#boot`
 - see [discussion](https://github.com/arendst/Tasmota/issues/9026#issuecomment-668879510)
+
 **3. Additional Information:**
    - For more detailed information, troubleshooting, and advanced configurations, refer to the [Tasmota Documentation](https://ota.tasmota.com/tasmota/).
 
