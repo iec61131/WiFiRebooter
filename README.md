@@ -64,6 +64,9 @@ This guide will walk you through creating a Smart WiFi Restarting Unit using a T
 2.3 **Missing ramp-up time reboots modem/router too early** 
 - A ramp-up time of, for example, 10 minutes is missing in the rules. Adding a delay or ramp-up time is essential to allow the modem/router to fully restart before subsequent commands are executed. Adjust the timing in the rules to accommodate the restart time of your specific modem/router.
 
+2.4. **Variable init**
+- Without an active Wifi ( which is not available upon restart) the triggers needs to be `Power1#Boot` instead of `system#boot`
+- see [discussion](https://github.com/arendst/Tasmota/issues/9026#issuecomment-668879510)
 **3. Additional Information:**
    - For more detailed information, troubleshooting, and advanced configurations, refer to the [Tasmota Documentation](https://ota.tasmota.com/tasmota/).
 
