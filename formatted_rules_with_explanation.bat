@@ -1,4 +1,4 @@
-;# bugfix, power1 boot trigger https://world.hey.com/goekesmi/using-tasmota-without-a-network-a-post-preserved-from-the-past-303b26f0
+
 ;# improved example based on https://tasmota.github.io/docs/Rules/#watchdog-for-wi-fi-router-or-modem
 
 ;# Var1 => ping time interval in minutes ( default 1min)
@@ -7,7 +7,8 @@
 ;# Var4 => inital boot up wait time for Wifi / modem to be ready or after forced wifi restart. Default 10min. (var4 >= var1)
 ;# Var5 => current interval time in minutes culculated at runtime ( default set to same value as var4)
 
-;# set unix time to 2023/01/01 and enables timer mechanism to work for rules
+;# set unix time to 2023/01/01 to allow timer mechanism to work for rules
+;# hint:  https://world.hey.com/goekesmi/using-tasmota-without-a-network-a-post-preserved-from-the-past-303b26f0
 Rule1 ON Power1#Boot Do Time 1672531201 ENDON
 
 Rule2
